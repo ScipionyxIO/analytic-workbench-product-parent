@@ -28,9 +28,8 @@
 		<version.elastic>5.5.0</version.elastic>
 		<version.lombok>1.16.18.1</version.lombok>
 		<version.smile>1.5.0</version.smile>
-		<docker.registry.server>192.168.99.100:5000</docker.registry.server>
-		<docker.registry.server.id>registry.gitlab.com</docker.registry.server.id>
-		<bintray.company>scipionyxcorp</bintray.company>
+		<docker.registry.server.id>hub.docker.com</docker.registry.server.id>
+		<docker.registry.base>scipionyxio</docker.registry.base>
 	</properties>
 
 	<build>
@@ -216,26 +215,6 @@
 		<repository>
 			<id>vaadin-addons</id>
 			<url>http://maven.vaadin.com/vaadin-addons</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<id>bintray-scipionyxcorp-io.scipionyx.analyticworkbench</id>
-			<name>bintray</name>
-			<url>https://dl.bintray.com/scipionyxcorp/io.scipionyx.analyticworkbench</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<id>snapshots</id>
-			<name>libs-snapshot</name>
-			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
 
