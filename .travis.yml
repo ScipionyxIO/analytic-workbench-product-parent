@@ -20,4 +20,4 @@ install: true
 
 script: 
   - cd parent
-  - mvn install deploy
+  - mvn deploy
