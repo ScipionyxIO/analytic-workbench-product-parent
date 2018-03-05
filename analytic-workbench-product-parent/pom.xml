@@ -1,0 +1,255 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>io.scipionyx.analyticworkbench</groupId>
+
+	<artifactId>parent</artifactId>
+
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<name>Analytic Workbench - Parent</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+	</parent>
+
+	<properties>
+		<version.java>1.8</version.java>
+		<version.vaadin>8.1.7</version.vaadin>
+		<version.vaadin.spring>2.0.1</version.vaadin.spring>
+		<version.spring.cloud>Edgware.RELEASE</version.spring.cloud>
+		<version.spring.data>Ingalls-SR9</version.spring.data>
+		<version.elastic>5.5.0</version.elastic>
+		<version.lombok>1.16.18.1</version.lombok>
+		<version.smile>1.5.0</version.smile>
+		<docker.registry.server>192.168.99.100:5000</docker.registry.server>
+		<docker.registry.server.id>registry.gitlab.com</docker.registry.server.id>
+		<bintray.company>scipionyxcorp</bintray.company>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${version.spring.cloud}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-releasetrain</artifactId>
+				<version>${version.spring.data}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- Vaadin -->
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-spring-boot-starter</artifactId>
+				<version>2.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-server</artifactId>
+				<version>${version.vaadin}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-themes</artifactId>
+				<version>${version.vaadin}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-client-compiled</artifactId>
+				<version>${version.vaadin}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-push</artifactId>
+				<version>${version.vaadin}</version>
+			</dependency>
+			<!-- Apache Commons -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-math3</artifactId>
+				<version>3.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+			<!-- Scipionyx -->
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench</groupId>
+				<artifactId>model-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench</groupId>
+				<artifactId>api-backend-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench</groupId>
+				<artifactId>model-expert</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- Scipionyx Core -->
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench.core</groupId>
+				<artifactId>backend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- Scipionyx Infra -->
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench.infra</groupId>
+				<artifactId>json</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench.infra</groupId>
+				<artifactId>elastic</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- Scipionyx Case Management -->
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench.casemanagement</groupId>
+				<artifactId>model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.scipionyx.analyticworkbench.casemanagement</groupId>
+				<artifactId>api-backend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- Others -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven</artifactId>
+				<version>${version.lombok}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.haifengl</groupId>
+				<artifactId>smile-core</artifactId>
+				<version>${version.smile}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.lukehutch</groupId>
+				<artifactId>fast-classpath-scanner</artifactId>
+				<version>2.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rabbitmq</groupId>
+				<artifactId>http-client</artifactId>
+				<version>2.0.1.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>projectlombok.org</id>
+			<url>http://projectlombok.org/mavenrepo</url>
+		</repository>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<id>bintray-scipionyxcorp-io.scipionyx.analyticworkbench</id>
+			<name>bintray</name>
+			<url>https://dl.bintray.com/scipionyxcorp/io.scipionyx.analyticworkbench</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<id>snapshots</id>
+			<name>libs-snapshot</name>
+			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>scipionyx-nexus-release</id>
+			<name>scipionyx-nexus-release</name>
+			<url>http://nexus.scipionyx.org/repository/scipionyx-maven-release</url>
+		</repository>
+		<snapshotRepository>
+			<id>scipionyx-nexus-snapshot</id>
+			<name>scipionyx-nexus-snapshot</name>
+			<url>http://nexus.scipionyx.org/repository/scipionyx-maven-snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
