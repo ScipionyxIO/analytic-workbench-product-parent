@@ -13,20 +13,23 @@ branches:
 jdk:
   - openjdk8
 
+## Install
+
 before_install:
   - cp .travis.maven.settings.xml $HOME/.m2/settings.xml
 
-install:
-  - cd parent
-  - mvn deploy
+install: true
+  
+#before_script:
 
-#deploy:
-#  provider: script
-#  skip_cleanup: true
-#  script:
-#    - cp .travis.maven.settings.xml $HOME/.m2/settings.xml
-#    - mvn deploy  
+#script:
+#  - cd parent
+#  - mvn deploy
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - mvn deploy  
 #  on:
 #    tags: true
-
-
