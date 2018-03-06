@@ -12,8 +12,8 @@
 
 		<server>
 			<id>scipionyx-nexus-snapshot</id>
-			<username>rmendes</username>
-			<password>soeusei11</password>
+			<username>${env.nexus_username}</username>
+			<password>${env.nexus_password}</password>
 		</server>
 		
 	</servers>
